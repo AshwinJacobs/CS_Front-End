@@ -1,32 +1,34 @@
 <template>
   <tr>
     <td class="image">
-      <img :src="event.Img" />
+      <img :src="product.image" />
     </td>
     <td class="date">
-      {{ event.Title }}
+      {{ product.Title }}
     </td>
     <td class="email">
-      {{ event.Date }}
+      {{ product.Date }}
     </td>
     <td class="email">
-      {{ event.Description }}
+      {{ product.Description }}
     </td>
     <td class="email">
-      {{ event.Type }}
+      {{ product.Type }}
     </td>
-    <td><i  @click="deleteEvent(event.id)" class="fa-solid fa-trash-can"></i></td>
-    <!-- <td><button @click="deleteEvent(event.id)">Delete</button></td> -->
+    <td>
+      <i @click="deleteproduct(product.id)" class="fa-solid fa-trash-can"></i>
+    </td>
+    <!-- <td><button @click="deleteproduct(product.id)">Delete</button></td> -->
     <!-- <td class="commenter"><i class="fas fa-angle-down"></i></td>
     <td class="activeUser"><i class="fas fa-angle-down"></i></td> -->
   </tr>
 </template>
 <script>
 export default {
-  props: ["event"],
+  props: ["product"],
   methods: {
-    deleteEvent(id) {
-      return this.$store.dispatch("deleteEvent", id);
+    deleteproduct(id) {
+      return this.$store.dispatch("deleteproduct", id);
     },
   },
 };

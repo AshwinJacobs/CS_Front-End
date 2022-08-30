@@ -24,7 +24,7 @@ export default {
 <style>
 .img-fluid {
   width: 18rem;
-  height: 15rem;
+  height: 26rem;
   border-radius: 5px;
   transition: 0.2 linear;
 }

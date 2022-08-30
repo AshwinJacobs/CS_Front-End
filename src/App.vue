@@ -8,9 +8,9 @@
       <div class="wave"></div>
     </div>
   </body>
-  <v-footer>
+  <v-Footer>
     <Footer />
-  </v-footer>
+  </v-Footer>
 </template>
 
 <script>

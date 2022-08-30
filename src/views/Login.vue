@@ -1,102 +1,76 @@
 <template>
-  <div class="Login">
-    <h1 class="well">Welcome Please Login</h1>
-    <div class="container">
-      <form @submit.prevent="login">
-        <input
-          class="login-form-email"
-          type="text"
-          v-model="email"
-          placeholder="Email"
-        />
-
-        <input
-          class="login-form-password"
-          type="text"
-          v-model="password"
-          placeholder="Password"
-        />
-
-        <div>
-          <button type="submit" id="login-btn">Login</button>
+  <div class="login container">
+    <h1>Login</h1>
+    <form @submit="login">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        @click="reset"
+        v-model="email"
+        required
+        class="form-control"
+      />
+      <label for="password" @click="reset" class="form-label">Password</label>
+      <input type="password" class="form-control" required v-model="password" />
+      <div v-if="clicked">
+        <div v-if="user">
+          <p>Successfully logged in</p>
         </div>
-        <div v-if="users">Welcome {{ users.FullName }}</div>
-      </form>
-    </div>
+        <div v-else>
+          <p>Checking...</p>
+        </div>
+      </div>
+      <div v-else>
+        <button class="btn btn-dark" type="submit">Login</button>
+      </div>
+    </form>
   </div>
 </template>
+
 <script>
 export default {
-  computed: {
-    users() {
-      return this.$store.state.users;
-    },
-  },
   data() {
     return {
       email: "",
       password: "",
+      clicked: false,
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   methods: {
-    login() {
-      this.$store.dispatch("login", {
+    login(e) {
+      e.preventDefault();
+      this.clicked = true;
+      const payload = {
         email: this.email,
         password: this.password,
-      });
+      };
+      this.$store.dispatch("login", payload);
+    },
+    reset() {
+      this.clicked = false;
     },
   },
 };
 </script>
+
 <style scoped>
-.well {
-  margin-left: 600px;
-  margin-bottom: 30px;
-}
-.Login {
-  padding-top: 80px;
-  height: 80vh;
-}
-
-.container {
-  margin: auto;
-  padding: auto;
-  width: 350px;
-  height: 390px;
-  background-color: rgba(167, 165, 196, 0.3);
-  backdrop-filter: blur(3px);
-  border: 2px solid white;
-  border-radius: 10px;
-  background-clip: padding-box;
-}
-
-.login-form-email {
-  margin: 35px;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid white;
-  width: 50%;
-  font-size: 20px;
-  background: transparent;
-  color: white;
-}
-
-.login-form-password {
-  margin: 35px;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid white;
-  width: 50%;
-  font-size: 20px;
-  background: transparent;
-  color: white;
-}
-
-#login-btn {
-  margin: 35px;
-  background: transparent;
-  border: none;
-  font-weight: bolder;
-  font-size: 20px;
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  width: 100%;
+  padding-top: 20vh;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>

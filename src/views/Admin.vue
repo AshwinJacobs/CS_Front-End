@@ -32,9 +32,9 @@
           <th class="statusHead">Type</th>
           <th>Delete</th>
         </tr>
-        <AdminCard
+        <Admintable
           v-for="product in filteredproducts"
-          :key="product.id"
+          :key="product.product_id"
           :product="product"
         />
       </table>
@@ -43,13 +43,13 @@
 </template>
 
 <script>
-import AdminCard from "../components/Admintable.vue";
+import Admintable from "../components/Admintable.vue";
 export default {
-  components: { AdminCard },
+  components: { Admintable },
   data() {
     return {
       search: "",
-      products: [],
+      products: "",
       id: "",
       title: "",
       date: "",
@@ -59,13 +59,14 @@ export default {
     };
   },
 
-  computed: {
-    filteredproducts() {
-      return this.$store.state.products?.filter((product) => {
-        return product.Type?.toLowerCase().includes(this.search.toLowerCase());
-      });
-    },
+  filteredproducts() {
+    return this.$store.state.products?.filter((product) => {
+      return product.category
+        ?.toLowerCase()
+        .includes(this.search.toLowerCase());
+    });
   },
+  components: { Admintable },
   mounted() {
     this.$store.dispatch("getproducts");
   },

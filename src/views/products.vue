@@ -7,7 +7,7 @@
   />
   <div class="row">
     <productCard
-      v-for="product in filteredproducts"
+      v-for="product of filteredproducts"
       :key="product.product_id"
       :product="product"
     />

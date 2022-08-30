@@ -1,6 +1,6 @@
 <template>
   <div class="wave">
-    <v-footer class="wave"> </v-footer>
+    <v-Footer class="wave"> </v-Footer>
   </div>
 </template>
 <script>

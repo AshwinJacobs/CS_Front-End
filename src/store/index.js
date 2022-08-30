@@ -63,7 +63,7 @@ export default createStore({
         alert(data);
       }
     },
-    register: async (context, data) => {
+    register: async (context, payload) => {
       const {
         full_name,
         email,
@@ -73,7 +73,7 @@ export default createStore({
         country,
         phone,
         user_type,
-      } = data;
+      } = payload;
       fetch("https://capstone-fin.herokuapp.com/users/register", {
         method: "POST",
         body: JSON.stringify({
@@ -91,7 +91,10 @@ export default createStore({
         },
       })
         .then((response) => response.json())
-        .then((json) => context.commit("setusers", json));
+        .then((json) => {
+          console.log(json);
+          context.commit("setusers", json);
+        });
     },
     getproducts: async (context) => {
       fetch("https://capstone-fin.herokuapp.com/products")
@@ -99,11 +102,13 @@ export default createStore({
         .then((products) => context.commit("setproducts", products));
     },
   },
-  getproduct: async (context, id) => {
+  GetProduct: async (context, id) => {
     fetch("https://capstone-fin.herokuapp.com/products/" + id)
       .then((res) => res.json())
-      .then((product) => context.commit("setproduct", product));
-    console.log(res);
+      .then((product) => {
+        context.commit("setproduct", product);
+        console.log(product);
+      });
   },
   deleteProduct: async (context, id) => {
     fetch("https://capstone-fin.herokuapp.com/products/" + id, {

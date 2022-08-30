@@ -1,104 +1,121 @@
 <template>
-  <div class="regis-page">
-    <h1>If You Are Not A User Please Register ...</h1>
-      <div class="container">
-    <form @submit.prevent="register">
-      <input class="register-form-name" type="text" v-model="FullName" placeholder="Full Name" />
-      <input class="register-form-email" type="text" v-model="email" placeholder="Email" />
-      <input class="register-form-password" type="text" v-model="password" placeholder="Password" />
-      <div>
-      <button id="register-btn" type="submit">Register</button>
+  <div class="register container">
+    <h1>Register New User</h1>
+    <form @submit="register">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        @click="reset"
+        v-model="email"
+        required
+        class="form-control"
+      />
+      <label for="password" @click="reset" class="form-label">Password</label>
+      <input type="password" class="form-control" required v-model="password" />
+      <label for="text" @click="reset" class="form-label">Name</label>
+      <input type="text" class="form-control" required v-model="full_name" />
+      <label for="text" @click="reset" class="form-label"
+        >Billing Address</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        required
+        v-model="billing_address"
+      />
+      <label for="text" @click="reset" class="form-label"
+        >Shipping Address</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        required
+        v-model="default_shipping_address"
+      />
+      <label for="text" @click="reset" class="form-label">Country</label>
+      <input type="text" class="form-control" required v-model="country" />
+
+      <label for="text" @click="reset" class="form-label">Phone No.</label>
+      <input type="number" class="form-control" required v-model="phone" />
+
+      <label for="text" @click="reset" class="form-label">User-type</label>
+      <input type="text" class="form-control" required v-model="user_type" />
+      <div v-if="clicked">
+        <div v-if="user">
+          <p>Successfully registered</p>
+        </div>
+        <div v-else>
+          <p>Registering...</p>
+        </div>
+      </div>
+      <div v-else>
+        <button class="btn btn-dark w-4 px-5 my-3" type="submit">
+          Register
+        </button>
       </div>
     </form>
-    </div>
-    <div v-if="users">Welcome {{ users.FullName }}</div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
     return {
-      FullName: "",
       email: "",
       password: "",
+      full_name: "",
+      billing_address: "",
+      default_shipping_address: "",
+      country: "",
+      phone: "",
+      user_type: "",
+      clicked: false,
     };
   },
   computed: {
-    users() {
-      return this.$store.state.users;
+    user() {
+      return this.$store.state.user;
     },
   },
   methods: {
-    register() {
-      return this.$store.dispatch("register", {
-        FullName: this.FullName,
+    register(e) {
+      e.preventDefault();
+      this.clicked = true;
+      const payload = {
         email: this.email,
         password: this.password,
-      });
+        full_name: this.full_name,
+        billing_address: this.billing_address,
+        default_shipping_address: this.default_shipping_address,
+        country: this.country,
+        phone: this.phone,
+        user_type: this.user_type,
+      };
+      this.$store.dispatch("register", payload);
+    },
+    reset() {
+      this.clicked = false;
     },
   },
 };
 </script>
+
 <style scoped>
-h1 {
-  display: flex;
-  justify-content: center;
-  padding-top: 100px;
-}
-.regis-page{
- height: 80vh;
-}
-
-.container {
-  margin: auto;
-  padding: auto;
-  width: 350px;
-  height: 390px;
-  background-color: rgba(167, 165, 196, 0.3);
-  backdrop-filter: blur(3px);
-  border: 2px solid white;
-  border-radius: 10px;
-  background-clip: padding-box;
-}
-
-.register-form-email{
-  margin: 35px;
-   border: 0;
-  outline:0;
-  border-bottom: 2px solid white;
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
   width: 50%;
-  font-size: 20px;
-  background: transparent;
-  color: white;
+  padding-top: 10vh;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
 }
-
-.register-form-password{
-  margin: 35px;
-    border: 0;
-  outline:0;
-  border-bottom: 2px solid white;
-  width: 50%;
-  font-size: 20px;
-  background: transparent;
-  color: white;
-}
-
-.register-form-name{
-  margin: 35px;
-    border: 0;
-  outline:0;
-  border-bottom: 2px solid white;
-  width: 50%;
-  font-size: 20px;
-  background: transparent;
-  color: white;
-}
-
-#register-btn {
-  margin: 35px;
-  background: transparent;
-  border: none;
-  font-weight: bolder;
-  font-size: 20px;
+.form-label {
+  padding-top: 10px;
 }
 </style>

@@ -1,17 +1,14 @@
 <template>
-  <p>
+  <div class="p">
     Small items that makes a big difference
-    <span> The Gadget Store </span> <div class="wel">WELCOME</div>
-  </p>
-
- 
+    <span> The Gadget Store </span>
+    <div class="wel">WELCOME</div>
+  </div>
 </template>
 <script>
 export default {};
 </script>
-<style  scoped>
-
-
+<style scoped>
 body {
   font: 400 1em/1.5 "Neuton";
   background: #000000;
@@ -19,7 +16,7 @@ body {
   text-align: center;
   margin: 0;
 }
-p {
+.p {
   text-transform: uppercase;
   letter-spacing: 0.5em;
   display: inline-block;
@@ -32,7 +29,7 @@ p {
   width: 40em;
   margin: 0 0 0 -20em;
 }
-p span {
+.p span {
   font: 700 4em/1 "Oswald", sans-serif;
   letter-spacing: 0;
   padding: 0.25em 0 0.325em;
