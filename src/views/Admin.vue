@@ -9,16 +9,16 @@
       class="search-admin"
       type="text"
       v-model="search"
-      placeholder="Search by Private/Public products"
+      placeholder="Search by products"
     />
 
     <div class="adform">
-      <form @submit.prevent="createproduct()">
-        <input type="text" v-model="Image" placeholder="IMG URL" />
-        <input type="text" v-model="title" placeholder="Title" />
-        <input type="text" v-model="date" placeholder="Date" />
-        <input type="text" v-model="type" placeholder="Description" />
-        <input type="text" v-model="Description" placeholder="Type" />
+      <form @submit="createproduct()">
+        <input type="text" v-model="image" placeholder="image" />
+        <input type="text" v-model="name" placeholder="name" />
+        <input type="text" v-model="create_date" placeholder="Date" />
+        <input type="text" v-model="category" placeholder="category" />
+        <input type="text" v-model="descriptions" placeholder="descriptions" />
         <button type="submit">ADD product</button>
       </form>
     </div>
@@ -34,7 +34,7 @@
         </tr>
         <Admintable
           v-for="product in filteredproducts"
-          :key="product.product_id"
+          :key="product.id"
           :product="product"
         />
       </table>
@@ -48,38 +48,43 @@ export default {
   components: { Admintable },
   data() {
     return {
+      products: null,
       search: "",
-      products: "",
       id: "",
-      title: "",
-      date: "",
-      type: "",
-      Img: "",
-      Description: "",
+      name: "",
+      create_date: "",
+      category: "",
+      image: "",
+      descriptions: "",
     };
   },
+  computed: {
+    filteredproducts() {
+      return this.$store.state.products?.filter((product) => {
+        return product.category
+          ?.toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
+    },
+    products() {
+      return this.$store.state.product;
+    },
 
-  filteredproducts() {
-    return this.$store.state.products?.filter((product) => {
-      return product.category
-        ?.toLowerCase()
-        .includes(this.search.toLowerCase());
-    });
+    // components: { Admintable },
   },
-  components: { Admintable },
-  mounted() {
-    this.$store.dispatch("getproducts");
-  },
-
   methods: {
     createproduct() {
       return this.$store.dispatch("createproduct", {
         Title: this.title,
-        Date: this.date,
-        Type: this.type,
+        create_date: this.create_date,
+        category: this.category,
         Description: this.Description,
       });
     },
+  },
+
+  mounted() {
+    this.$store.dispatch("getproducts");
   },
 };
 </script>

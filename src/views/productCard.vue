@@ -12,8 +12,8 @@
           <div class="card-body">
             <p class="card-text">{{ product.name }}</p>
             <p class="card-text">R{{ product.price }}</p>
-            <p class="card-text">{{ product.Description }}</p>
-            <p class="card-text">{{ product.Type }}</p>
+            <p class="card-text">{{ product.descriptions }}</p>
+            <p class="card-text">{{ product.category }}</p>
           </div>
         </div>
       </div>

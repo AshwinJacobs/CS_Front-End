@@ -7,10 +7,9 @@
       <div class="card m-3" style="width: 18rem">
         <img v-bind:src="product.image" class="img-fluid" />
         <div class="card-body">
-          <p class="card-text-product">{{ product.Title }}</p>
-          <p class="card-text-product">{{ product.Date }}</p>
-          <p class="card-text-product">{{ product.Type }}</p>
-          <p class="card-text-product">{{ product.Description }}</p>
+          <p class="card-text-product">{{ product.name }}</p>
+          <p class="card-text-product">R{{ product.price }}</p>
+          <p class="card-text-product">{{ product.category }}</p>
         </div>
       </div>
     </router-link>
@@ -24,7 +23,7 @@ export default {
 <style>
 .img-fluid {
   width: 18rem;
-  height: 26rem;
+  height: 15rem;
   border-radius: 5px;
   transition: 0.2 linear;
 }

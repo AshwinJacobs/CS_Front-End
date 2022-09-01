@@ -137,5 +137,6 @@ export default createStore({
       .then((response) => response.json())
       .then(() => context.dispatch("getProducts"));
   },
+
   modules: {},
 });

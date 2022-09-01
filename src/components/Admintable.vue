@@ -4,19 +4,22 @@
       <img :src="product.image" />
     </td>
     <td class="date">
-      {{ product.Title }}
+      {{ product.name }}
     </td>
     <td class="email">
-      {{ product.Date }}
+      {{ product.create_date }}
     </td>
     <td class="email">
-      {{ product.Description }}
+      {{ product.descriptions }}
     </td>
     <td class="email">
-      {{ product.Type }}
+      {{ product.category }}
     </td>
     <td>
-      <i @click="deleteproduct(product.id)" class="fa-solid fa-trash-can"></i>
+      <i
+        @click="deleteproduct(product.product_id)"
+        class="fa-solid fa-trash-can"
+      ></i>
     </td>
     <!-- <td><button @click="deleteproduct(product.id)">Delete</button></td> -->
     <!-- <td class="commenter"><i class="fas fa-angle-down"></i></td>

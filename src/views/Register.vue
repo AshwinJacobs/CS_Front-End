@@ -39,13 +39,19 @@
       <input type="number" class="form-control" required v-model="phone" />
 
       <label for="text" @click="reset" class="form-label">User-type</label>
-      <input type="text" class="form-control" required v-model="user_type" />
+      <input
+        type="text"
+        class="form-control"
+        required
+        v-model="user_type"
+        readonly
+      />
       <div v-if="clicked">
         <div v-if="user">
-          <p>Successfully registered</p>
+          <p>Registering...</p>
         </div>
         <div v-else>
-          <p>Registering...</p>
+          <p>Successfully registered</p>
         </div>
       </div>
       <div v-else>
@@ -68,7 +74,7 @@ export default {
       default_shipping_address: "",
       country: "",
       phone: "",
-      user_type: "",
+      user_type: "user",
       clicked: false,
     };
   },
