@@ -35,6 +35,7 @@ export default {
 }
 
 body {
+  overflow-x: hidden;
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: auto;

@@ -7,6 +7,7 @@ export default createStore({
     token: null,
     products: null,
     product: null,
+    cart: null,
   },
   getters: {},
   mutations: {
@@ -24,6 +25,9 @@ export default createStore({
     },
     setproduct: (state, product) => {
       state.product = product;
+    },
+    setcart: (state, list) => {
+      state.cart = list;
     },
   },
   actions: {
@@ -102,7 +106,7 @@ export default createStore({
         .then((products) => context.commit("setproducts", products));
     },
   },
-  GetProduct: async (context, id) => {
+  getProduct: async (context, id) => {
     fetch("https://capstone-fin.herokuapp.com/products/" + id)
       .then((res) => res.json())
       .then((product) => {
@@ -136,6 +140,70 @@ export default createStore({
     })
       .then((response) => response.json())
       .then(() => context.dispatch("getProducts"));
+  },
+  //cart
+  getcart: async (context, id) => {
+    // id = context.state.user.id
+    await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "x-auth-token": context.state.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((product) => {
+        // console.log(data)
+        context.commit("setcart", product);
+      });
+  },
+  addTocart: async (context, product, id) => {
+    id = context.state.user.id;
+    console.log(product);
+    await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
+      method: "POST",
+      body: JSON.stringify(product),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "x-auth-token": context.state.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        context.dispatch("getcart", id);
+      });
+  },
+
+  clearcart: async (context, id) => {
+    await fetch("ttps://capstone-fin.herokuapp.com/users/" + id + "/cart", {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  },
+  deletecartItem: async (context, list, id) => {
+    id = context.state.user.id;
+    await fetch(
+      "ttps://capstone-fin.herokuapp.com/users/" + id + "/cart/" + list.cartid,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-auth-token": context.state.token,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        context.dispatch("getcart", id);
+      });
   },
 
   modules: {},

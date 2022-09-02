@@ -52,12 +52,16 @@
         </div>
         <div v-else>
           <p>Successfully registered</p>
+
+          <router-link class="link-login" to="/login"
+            ><div class="wrap">
+              <button class="button">Login</button>
+            </div></router-link
+          >
         </div>
       </div>
-      <div v-else>
-        <button class="btn btn-dark w-4 px-5 my-3" type="submit">
-          Register
-        </button>
+      <div v-else class="wrap">
+        <button class="button" type="submit">Register</button>
       </div>
     </form>
   </div>
@@ -123,5 +127,42 @@ export default {
 }
 .form-label {
   padding-top: 10px;
+}
+html,
+body {
+  height: 100%;
+}
+
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 140px;
+  height: 45px;
+  margin-top: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #2ee59d;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
 }
 </style>

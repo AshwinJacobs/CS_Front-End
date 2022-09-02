@@ -45,6 +45,7 @@ const routes = [
     component: productCard,
     // props: true,
   },
+
   {
     path: "/Admin",
     name: "Admin",

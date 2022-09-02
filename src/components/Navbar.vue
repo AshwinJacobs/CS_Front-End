@@ -3,10 +3,6 @@
     <nav class="branding">
       <h1 class="cash">products</h1>
       <ul v-show="!mobile" class="navigation">
-        <!-- <li>
-          <router-link class="link" to="/">Home</router-link>
-        </li> -->
-
         <li>
           <router-link class="link" to="/home">Home</router-link>
         </li>
@@ -16,7 +12,12 @@
         <li>
           <router-link class="link" to="/products">All products</router-link>
         </li>
-
+        <li>
+          <a type="button" data-bs-toggle="offcanvas" data-bs-target="#Cart">
+            Cart
+            <i class="bi bi-cart3">{{ num }}</i>
+          </a>
+        </li>
         <div v-if="!User">
           <li>
             <router-link class="link" to="/login">Login</router-link
@@ -55,6 +56,12 @@
           <li>
             <router-link class="link" to="/products">All products</router-link>
           </li>
+          <li>
+            <a type="button" data-bs-toggle="offcanvas" data-bs-target="#Cart">
+              Cart
+              <i class="bi bi-cart3">{{ num }}</i>
+            </a>
+          </li>
           <div v-if="!User">
             <li>
               <router-link class="link" to="/login">Login</router-link>
@@ -70,11 +77,17 @@
       </transition>
     </nav>
   </header>
+
+  <cart />
 </template>
 <script>
 import store from "@/store";
+import cart from "./Cart.vue";
 export default {
-  name: "Navbar",
+  components: {
+    cart,
+  },
+  name: "Navbar,Cart",
   data() {
     return {
       scrollPosition: null,
