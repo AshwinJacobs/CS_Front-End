@@ -13,23 +13,21 @@
           <router-link class="link" to="/products">All products</router-link>
         </li>
         <li>
-          <a type="button" data-bs-toggle="offcanvas" data-bs-target="#Cart">
-            Cart
-            <i class="bi bi-cart3">{{ num }}</i>
-          </a>
+          <router-link class="link my-5" to="/cart">Cart</router-link>
         </li>
-        <div v-if="!User">
+
+        <div v-if="User">
           <li>
-            <router-link class="link" to="/login">Login</router-link
-            ><span>|</span>
-            <router-link class="link" to="/register">Register</router-link>
+            <router-link class="link" to="/login" @click="logout"
+              >Logout {{ User.full_name }}</router-link
+            >
           </li>
         </div>
         <div v-else>
           <li>
-            <router-link class="link" to="/login" @click="logout"
-              >Logout {{ User.FullName }}</router-link
-            >
+            <router-link class="link" to="/login">Login</router-link
+            ><span>|</span>
+            <router-link class="link" to="/register">Register</router-link>
           </li>
         </div>
       </ul>
@@ -57,21 +55,21 @@
             <router-link class="link" to="/products">All products</router-link>
           </li>
           <li>
-            <a type="button" data-bs-toggle="offcanvas" data-bs-target="#Cart">
-              Cart
-              <i class="bi bi-cart3">{{ num }}</i>
-            </a>
+            <router-link class="link" to="/cart">Cart</router-link>
           </li>
-          <div v-if="!User">
+
+          <div v-if="user">
+            <div class="logout">
+              <button type="button" @click="logout">Logout</button>
+            </div>
+          </div>
+          <div v-if="!user">
             <li>
               <router-link class="link" to="/login">Login</router-link>
             </li>
             <li>
               <router-link class="link" to="/register">Register</router-link>
             </li>
-          </div>
-          <div v-else>
-            <button @click="logout">Logout {{ User.FullName }}</button>
           </div>
         </ul>
       </transition>
@@ -98,30 +96,19 @@ export default {
   },
   computed: {
     User() {
-      return store.state.users;
+      return store.state.user;
     },
-  },
-  created() {
-    window.addEventListener("resize", this.checkScreen);
+    admin() {
+      return this.$store.state.admin;
+    },
   },
 
   methods: {
     logout() {
-      store.dispatch("logout");
-    },
-    toggleMobileNav() {
-      this.mobileNav = !this.mobileNav;
-    },
-
-    checkScreen() {
-      this.windowWidth = window.innerWidth;
-      if (this.windowWidth <= 750) {
-        this.mobile = true;
-        return;
-      }
-      this.mobile = false;
-      this.mobileNav = false;
-      return;
+      this.$store.state.user = null;
+      this.$store.state.cart = null;
+      localStorage.removeItem("users");
+      this.$router.push("./login");
     },
   },
 };
