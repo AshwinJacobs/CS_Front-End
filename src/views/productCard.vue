@@ -19,7 +19,7 @@
           <p class="card-text">Price: R{{ product.price }}</p>
           <div class="wrap">
             <button
-              @click="this.$store.dispatch('addTocart', product[0])"
+              @click="this.$store.dispatch('addTocart', product)"
               class="button btn btn-dark"
               type="submit"
             >
@@ -34,6 +34,11 @@
 <script>
 export default {
   props: ["id"],
+  computed: {
+    products() {
+      return this.item.product;
+    },
+  },
   mounted() {
     fetch(
       "https://capstone-fin.herokuapp.com/products/" + this.$route.params.id
@@ -45,16 +50,20 @@ export default {
       });
     // this.$store.dispatch("getproduct", this.$route.params.id);
   },
+  methods: {
+    add() {
+      this.$store.dispatch("addToCart", {
+        id: this.id,
+      });
+    },
+  },
+
   data() {
     return {
       product: null,
     };
   },
-  computed: {
-    products() {
-      return this.item.product;
-    },
-  },
+
   // mounted() {
   //   fetch("https://capstone-fin.herokuapp.com/products/" + this.id)
   //     .then((res) => res.json())

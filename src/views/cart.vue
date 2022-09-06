@@ -52,10 +52,7 @@
                       <a
                         class="btn"
                         @click="
-                          this.$store.dispatch(
-                            'deleteproduct',
-                            product.product_id
-                          )
+                          this.$store.dispatch('deletecartItem', product.cartid)
                         "
                         ><i class="fa-solid fa-trash-can"></i
                       ></a>
@@ -64,7 +61,7 @@
                   </div>
                   <button
                     class="btn"
-                    @click="this.$store.dispatch('deleteCart')"
+                    @click="this.$store.dispatch('clearcart')"
                   >
                     Clear Cart
                   </button>
@@ -101,10 +98,12 @@ export default {
     },
     total() {
       let prices = this.$store.state.cart;
-      let sum = prices.reduce((x, cart) => {
-        return x + cart.price;
-      }, 0);
-      return sum;
+      if (prices != null) {
+        let sum = prices.reduce((x, cart) => {
+          return x + cart.price;
+        }, 0);
+        return sum;
+      }
     },
     num: function () {
       let Cnum = this.$store.state.cart;

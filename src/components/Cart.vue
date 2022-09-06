@@ -1,5 +1,5 @@
 <template>
-  <div class="offcanvas offcanvas-end" tabindex="1" id="Cart">
+  <div class="offcanvas offcanvas-" tabindex="1" id="Cart">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="cartproduct">Offcanvas right</h5>
       <button

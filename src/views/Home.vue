@@ -50,10 +50,10 @@ body {
 /* Animate Background Image */
 @-webkit-keyframes aitf {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
   100% {
-    background-position: 100% 50%;
+    background-position: 0% 50%;
   }
 }
 </style>

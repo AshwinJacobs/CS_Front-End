@@ -44,8 +44,11 @@
 
 <script>
 import Admintable from "../components/Admintable.vue";
+import addprod from "../components/addprod.vue";
+import deleteProd from "../components/deleteProd.vue";
+import editprod from "../components/editprod.vue";
 export default {
-  components: { Admintable },
+  components: { Admintable, addprod, deleteProd, editprod },
   data() {
     return {
       products: null,
