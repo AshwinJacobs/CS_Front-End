@@ -126,12 +126,17 @@ export default createStore({
         });
     },
     deleteProduct: async (context, id) => {
-      fetch("https://capstone-fin.herokuapp.com/products/" + id, {
+      fetch("http://localhost:6869/products/" + id, {
         method: "DELETE",
-      }).then(() => context.dispatch("getProducts"));
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.msg);
+          context.dispatch("getproducts");
+        });
     },
     createProduct: async (context, Product) => {
-      fetch("https://capstone-fin.herokuapp.com/products/", {
+      fetch("http://localhost:6869/products/", {
         method: "POST",
         body: JSON.stringify(Product),
         headers: {
@@ -139,10 +144,10 @@ export default createStore({
         },
       })
         .then((response) => response.json())
-        .then(() => context.dispatch("getProducts"));
+        .then(() => context.dispatch("getproducts"));
     },
     updateProduct: async (context, Product) => {
-      fetch("https://capstone-fin.herokuapp.com/products/" + Product.id, {
+      fetch("http://localhost:6869/products/" + Product.product_id, {
         method: "PUT",
         body: JSON.stringify(Product),
         headers: {
@@ -150,8 +155,49 @@ export default createStore({
         },
       })
         .then((response) => response.json())
-        .then(() => context.dispatch("getProducts"));
+        .then((data) => {
+          console.log(data.msg);
+          console.log(data.results);
+          context.dispatch("getproducts");
+        });
     },
+
+    // createProduct: async (context, payload) => {
+    //   // const {
+    //   //   sku,
+    //   //   name,
+    //   //   price,
+    //   //   weight,
+    //   //   descriptions,
+    //   //   thumbnail,
+    //   //   image,
+    //   //   category,
+    //   //   // create_date,
+    //   //   stock,
+    //   // } = payload;
+    //   fetch("http://localhost:6869/products", {
+    //     method: "POST",
+    //     body: JSON.stringify(payload),
+    //     // JSON.stringify({
+    //     //   sku: sku,
+    //     //   name: name,
+    //     //   price: price,
+    //     //   weight: weight,
+    //     //   descriptions: descriptions,
+    //     //   thumbnail: thumbnail,
+    //     //   image: image,
+    //     //   category: category,
+    //     //   create_date: create_date,
+    //     //   stock: stock,
+    //     // })
+    //     headers: {
+    //       "Content-type": "application/json; charset=UTF-8",
+    //     },
+    //   })
+    //     .then((response) => response.json())
+    //     .then(() => context.dispatch("getProducts"));
+    // },
+
     //cart
     getcart: (context, id) => {
       if (context.state.user === null) {
@@ -177,7 +223,7 @@ export default createStore({
       console.log(product.product_id);
       id = context.state.user.user_id;
       // console.log(product);
-      await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
+      await fetch("http://localhost:6869/users/" + id + "/cart", {
         // await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
         method: "POST",
         body: JSON.stringify({
@@ -197,7 +243,7 @@ export default createStore({
 
     clearcart: async (context, id) => {
       id = context.state.user.user_id;
-      await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
+      await fetch("http://localhost:6869/users/" + id + "/cart", {
         // await fetch("https://capstone-fin.herokuapp.com/users/ id /cart", {
         method: "DELETE",
         headers: {
@@ -214,7 +260,7 @@ export default createStore({
     deletecartItem: async (context, list, id) => {
       id = context.state.user.id;
       await fetch(
-        "https://capstone-fin.herokuapp.com/users/" +
+        "http://localhost:6869/users/" +
           // "https://capstone-fin.herokuapp.com/users/" +
           id +
           "/cart/" +

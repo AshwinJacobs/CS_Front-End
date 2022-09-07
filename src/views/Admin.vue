@@ -13,14 +13,16 @@
     />
 
     <div class="adform">
-      <form @submit="createproduct()">
-        <input type="text" v-model="image" placeholder="image" />
-        <input type="text" v-model="name" placeholder="name" />
-        <input type="text" v-model="create_date" placeholder="Date" />
-        <input type="text" v-model="category" placeholder="category" />
-        <input type="text" v-model="descriptions" placeholder="descriptions" />
-        <button type="submit">ADD product</button>
-      </form>
+      <!-- <form @submit=""> -->
+      <input type="text" v-model="image" placeholder="image" />
+      <input type="text" v-model="name" placeholder="name" />
+      <input type="number" v-model="price" placeholder="price" />
+      <input type="text" v-model="create_date" placeholder="Date" />
+      <input type="text" v-model="category" placeholder="category" />
+      <input type="text" v-model="descriptions" placeholder="descriptions" />
+      <input type="number" v-model="stock" placeholder="stock" />
+      <button type="submit" @click="createproduct">ADD product</button>
+      <!-- </form> -->
     </div>
     <div class="filter-ui">
       <table>
@@ -44,21 +46,23 @@
 
 <script>
 import Admintable from "../components/Admintable.vue";
-import addprod from "../components/addprod.vue";
-import deleteProd from "../components/deleteProd.vue";
-import editprod from "../components/editprod.vue";
 export default {
-  components: { Admintable, addprod, deleteProd, editprod },
+  components: { Admintable },
   data() {
     return {
       products: null,
       search: "",
       id: "",
-      name: "",
-      create_date: "",
-      category: "",
-      image: "",
-      descriptions: "",
+      sku: null,
+      name: null,
+      price: null,
+      weight: null,
+      descriptions: null,
+      thumbnail: null,
+      image: null,
+      category: null,
+      create_date: null,
+      stock: null,
     };
   },
   computed: {
@@ -77,12 +81,19 @@ export default {
   },
   methods: {
     createproduct() {
-      return this.$store.dispatch("createproduct", {
-        Title: this.title,
-        create_date: this.create_date,
+      const payload = {
+        // sku: this.sku,
+        name: this.name,
+        price: this.price,
+        // weight: this.weight,
+        descriptions: this.descriptions,
+        // thumbnail: this.thum/bnail,
+        image: this.image,
         category: this.category,
-        Description: this.Description,
-      });
+        // create_date: this.create_date,
+        stock: this.stock,
+      };
+      return this.$store.dispatch("createProduct", payload);
     },
   },
 

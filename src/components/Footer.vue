@@ -1,38 +1,6 @@
 <template>
   <div class="wave">
-    <v-Footer class="wave footer-section">
-      <div class="copyright-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-              <div class="copyright-text">
-                <p>
-                  Copyright &copy; 2022, All Right Reserved
-                  <a href="">Gadget Store</a>
-                </p>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-              <div class="footer-menu">
-                <ul>
-                  <li>
-                    <router-link class="link" to="/home">Home</router-link>
-                  </li>
-                  <li>
-                    <router-link class="link" to="/about">About</router-link>
-                  </li>
-                  <li>
-                    <router-link class="link" to="/products"
-                      >All products</router-link
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </v-Footer>
+    <v-Footer class="wave footer-section"></v-Footer>
   </div>
 </template>
 <script>
