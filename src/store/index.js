@@ -126,7 +126,7 @@ export default createStore({
         });
     },
     deleteProduct: async (context, id) => {
-      fetch("http://localhost:6869/products/" + id, {
+      fetch("https://capstone-fin.herokuapp.com/products/" + id, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -136,7 +136,7 @@ export default createStore({
         });
     },
     createProduct: async (context, Product) => {
-      fetch("http://localhost:6869/products/", {
+      fetch("https://capstone-fin.herokuapp.com/products/", {
         method: "POST",
         body: JSON.stringify(Product),
         headers: {
@@ -147,13 +147,16 @@ export default createStore({
         .then(() => context.dispatch("getproducts"));
     },
     updateProduct: async (context, Product) => {
-      fetch("http://localhost:6869/products/" + Product.product_id, {
-        method: "PUT",
-        body: JSON.stringify(Product),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
+      fetch(
+        "https://capstone-fin.herokuapp.com/products/" + Product.product_id,
+        {
+          method: "PUT",
+          body: JSON.stringify(Product),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           console.log(data.msg);
@@ -204,7 +207,7 @@ export default createStore({
         alert("Please Login");
       } else {
         id = context.state.user.user_id;
-        fetch("http://localhost:6869/users/" + id + "/cart", {
+        fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
           // fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
           method: "GET",
           headers: {
@@ -223,7 +226,7 @@ export default createStore({
       console.log(product.product_id);
       id = context.state.user.user_id;
       // console.log(product);
-      await fetch("http://localhost:6869/users/" + id + "/cart", {
+      await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
         // await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
         method: "POST",
         body: JSON.stringify({
@@ -243,7 +246,7 @@ export default createStore({
 
     clearcart: async (context, id) => {
       id = context.state.user.user_id;
-      await fetch("http://localhost:6869/users/" + id + "/cart", {
+      await fetch("https://capstone-fin.herokuapp.com/users/" + id + "/cart", {
         // await fetch("https://capstone-fin.herokuapp.com/users/ id /cart", {
         method: "DELETE",
         headers: {
@@ -260,7 +263,7 @@ export default createStore({
     deletecartItem: async (context, list, id) => {
       id = context.state.user.id;
       await fetch(
-        "http://localhost:6869/users/" +
+        "https://capstone-fin.herokuapp.com/users/" +
           // "https://capstone-fin.herokuapp.com/users/" +
           id +
           "/cart/" +

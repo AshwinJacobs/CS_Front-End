@@ -5,10 +5,14 @@
         <div class="row">
           <div class="col-md-8">
             <div class="card m-3" v-for="product in cart" :key="product">
-              <div class="row">
-                <div class="col-md-4">
-                  <!-- img -->
-                  <img :src="product.image" class="img-fluid" alt="" />
+              <div class="card">
+                <div class="row">
+                  <div class="col-md-4">
+                    <!-- img -->
+                    <div class="card">
+                      <img :src="product.image" class="img-fluid" alt="" />
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <!-- name -->
@@ -128,5 +132,20 @@ export default {
 }
 .btn {
   background-color: black;
+}
+.col {
+  flex: 1 0 0%;
+  padding-top: 10rem;
+}
+.col-md-8 {
+  flex: 0 0 auto;
+  width: 66.66666667%;
+  padding-top: 10rem;
+}
+.p-3 {
+  padding-top: 50rem;
+  padding: 2rem !important;
+  width: 25rem;
+  padding: right 10rem;
 }
 </style>

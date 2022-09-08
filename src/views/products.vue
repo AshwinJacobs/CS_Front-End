@@ -13,7 +13,12 @@
     />
   </div>
   <div v-else>
-    <div class="spinner"></div>
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </template>
 <script>
@@ -59,40 +64,59 @@ export default {
   color: black;
 }
 
-/* From uiverse.io by @EmmaxPlay */
-.spinner {
+/* From uiverse.io by @mrhyddenn */
+.loader {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(#ee280e, #15a0f7, #6ed15a);
+  animation: animate7712 1.2s linear infinite;
+}
+
+@keyframes animate7712 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(#ee280e, #15a0f7, #5ad15a);
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: #333;
+  border: solid #333 10px;
   border-radius: 50%;
 }
 
-.spinner::before,
-.spinner:after {
-  content: "";
-  position: absolute;
-  border-radius: inherit;
+.loader span:nth-child(1) {
+  filter: blur(5px);
 }
 
-.spinner:before {
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
-  animation: spin8932 0.5s infinite linear;
+.loader span:nth-child(2) {
+  filter: blur(10px);
 }
 
-.spinner:after {
-  width: 85%;
-  height: 85%;
-  background-color: #212121;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.loader span:nth-child(3) {
+  filter: blur(25px);
 }
 
-@keyframes spin8932 {
-  to {
-    transform: rotate(360deg);
-  }
+.loader span:nth-child(4) {
+  filter: blur(50px);
 }
 </style>
