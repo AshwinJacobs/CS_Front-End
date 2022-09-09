@@ -1,6 +1,6 @@
 <template>
   <div class="login container">
-    <h1>Login</h1>
+    <h1 class="pb-3">Login</h1>
     <form @submit="login">
       <label for="email" class="form-label">Email</label>
       <input
@@ -59,11 +59,10 @@ export default {
 </script>
 
 <style scoped>
-h1,
-label,
-p {
-  color: #fff;
-}
+  .form-label , h1{
+    color: white;
+    font-size: 35px;
+  }
 .container,
 .container-fluid,
 .container-lg,

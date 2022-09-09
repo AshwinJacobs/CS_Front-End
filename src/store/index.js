@@ -165,42 +165,6 @@ export default createStore({
         });
     },
 
-    // createProduct: async (context, payload) => {
-    //   // const {
-    //   //   sku,
-    //   //   name,
-    //   //   price,
-    //   //   weight,
-    //   //   descriptions,
-    //   //   thumbnail,
-    //   //   image,
-    //   //   category,
-    //   //   // create_date,
-    //   //   stock,
-    //   // } = payload;
-    //   fetch("http://localhost:6869/products", {
-    //     method: "POST",
-    //     body: JSON.stringify(payload),
-    //     // JSON.stringify({
-    //     //   sku: sku,
-    //     //   name: name,
-    //     //   price: price,
-    //     //   weight: weight,
-    //     //   descriptions: descriptions,
-    //     //   thumbnail: thumbnail,
-    //     //   image: image,
-    //     //   category: category,
-    //     //   create_date: create_date,
-    //     //   stock: stock,
-    //     // })
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8",
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then(() => context.dispatch("getProducts"));
-    // },
-
     //cart
     getcart: (context, id) => {
       if (context.state.user === null) {

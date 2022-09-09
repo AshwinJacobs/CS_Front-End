@@ -15,11 +15,14 @@
         <li>
           <router-link class="link my-5" to="/cart">Cart</router-link>
         </li>
-
+        <li>
+          <router-link class="link my-5" to="/AccountView">Profile</router-link>
+        </li>
         <div v-if="User">
           <li>
             <router-link class="link" to="/login" @click="logout"
               >Logout {{ User.full_name }}</router-link
+              
             >
           </li>
         </div>

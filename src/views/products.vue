@@ -13,12 +13,7 @@
     />
   </div>
   <div v-else>
-    <div class="loader">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <div class="spinner" id="spin"></div>
   </div>
 </template>
 <script>
@@ -50,6 +45,8 @@ export default {
 <style scoped>
 .row {
   margin-top: 10px;
+  margin-left: 5rem;
+ 
 }
 .SB {
   margin-top: 53px;
@@ -64,59 +61,48 @@ export default {
   color: black;
 }
 
-/* From uiverse.io by @mrhyddenn */
-.loader {
+/* From uiverse.io by @EmmaxPlay */
+.spinner {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: linear-gradient(#ee280e, #15a0f7, #6ed15a);
-  animation: animate7712 1.2s linear infinite;
+  
 }
 
-@keyframes animate7712 {
-  0% {
-    transform: rotate(0deg);
-  }
+.spinner::before,
+.spinner:after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  
+}
 
-  100% {
+.spinner:before {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
+  animation: spin8932 0.5s infinite linear;
+  margin-left: 57rem;
+  margin-top: 25rem;
+}
+
+.spinner:after {
+  width: 85%;
+  height: 85%;
+  background-color: #212121;
+  top: 50%;
+  left: 50%;
+  margin-left: 57rem;
+  margin-top: 25rem;
+  transform: translate(-50%, -50%);
+  
+}
+
+@keyframes spin8932 {
+  to {
     transform: rotate(360deg);
   }
 }
 
-.loader span {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: linear-gradient(#ee280e, #15a0f7, #5ad15a);
-}
-
-.loader:after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  background: #333;
-  border: solid #333 10px;
-  border-radius: 50%;
-}
-
-.loader span:nth-child(1) {
-  filter: blur(5px);
-}
-
-.loader span:nth-child(2) {
-  filter: blur(10px);
-}
-
-.loader span:nth-child(3) {
-  filter: blur(25px);
-}
-
-.loader span:nth-child(4) {
-  filter: blur(50px);
-}
 </style>

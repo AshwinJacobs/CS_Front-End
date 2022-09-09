@@ -45,11 +45,17 @@ const routes = [
   },
 
   {
+    path: "/AccountView",
+    name: "AccountView",
+    component: () => import("../views/AccountView.vue"),
+  },
+  {
     path: "/product/:id",
     name: "productCard",
     component: productCard,
     // props: true,
   },
+
 
   {
     path: "/Admin",
@@ -58,6 +64,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Admin.vue"),
   },
+
 ];
 
 const router = createRouter({

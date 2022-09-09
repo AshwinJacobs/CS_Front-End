@@ -1,28 +1,23 @@
 <template>
-  <div class="onecard container-fluid col-md-4">
+  <div class="onecard col-md-4">
     <div v-if="product">
       <div v-for="product in product" :key="product.product_id"></div>
-      <div class="row">
-        <div class="col-md-6">
-          <div style="width: 30rem">
-            <div class="card">
-              <img
-                v-bind:src="product.image"
-                class="img-fluid"
-                style="width: 30rem"
-              />
-            </div>
-          </div>
+      <div class="d-flex justify-content-center container-fluid">
+        <div style="width: 30rem">
+          <img
+            v-bind:src="product.image"
+            class="img-fluid"
+            style="width: 30rem"
+          />
         </div>
-        <div class="col-md-6 text-center">
+        <div class="card-body">
           <p class="card-text">{{ product.name }}</p>
           <p class="card-text">Description:</p>
           <p class="card-text">{{ product.descriptions }}</p>
           <p class="card-text">Category:</p>
           <p class="card-text">{{ product.category }}</p>
           <p class="card-text">Price: R{{ product.price }}</p>
-          <!-- <div class="wrap"> -->
-          <p class="card-text">
+          <div class="wrap">
             <button
               @click="this.$store.dispatch('addTocart', product)"
               class="button btn btn-dark"
@@ -30,8 +25,7 @@
             >
               Add to Cart
             </button>
-          </p>
-          <!-- </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -97,7 +91,6 @@ export default {
 }
 .card-text {
   padding-left: 10rem;
-  color: #fff;
 }
 
 .col-md-4 {

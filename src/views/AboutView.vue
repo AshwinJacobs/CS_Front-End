@@ -22,7 +22,7 @@ export default {};
   padding: 0 1em;
   padding-top: 20vh;
   line-height: 1.6em;
-  color: white;
+
   margin-inline: auto;
 }
 
@@ -30,7 +30,6 @@ p {
   font-size: 1.3rem;
   text-align: justify;
   margin-inline: max(20px, 50% - 800px/2);
-  color: white;
 }
 h1 {
   font-size: 2.3rem;

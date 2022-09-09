@@ -53,13 +53,9 @@ export default {
 .card {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  /* background-clip: border-box; */
-  border: 1px solidrgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-  flex-wrap: wrap;
 
   /* background-clip: border-box; */
   border: 1px solidrgba(0, 0, 0, 0.125);

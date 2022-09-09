@@ -111,11 +111,6 @@ export default {
 </script>
 
 <style scoped>
-h1,
-p,
-label {
-  color: #fff;
-}
 .container,
 .container-fluid,
 .container-lg,
