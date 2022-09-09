@@ -46,7 +46,6 @@ export default {
 .row {
   margin-top: 10px;
   margin-left: 5rem;
- 
 }
 .SB {
   margin-top: 53px;
@@ -67,7 +66,6 @@ export default {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  
 }
 
 .spinner::before,
@@ -75,7 +73,6 @@ export default {
   content: "";
   position: absolute;
   border-radius: inherit;
-  
 }
 
 .spinner:before {
@@ -83,8 +80,8 @@ export default {
   height: 100%;
   background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
   animation: spin8932 0.5s infinite linear;
-  margin-left: 57rem;
-  margin-top: 25rem;
+  margin-left: 45rem;
+  margin-top: 15rem;
 }
 
 .spinner:after {
@@ -93,10 +90,9 @@ export default {
   background-color: #212121;
   top: 50%;
   left: 50%;
-  margin-left: 57rem;
-  margin-top: 25rem;
+  margin-left: 45rem;
+  margin-top: 15rem;
   transform: translate(-50%, -50%);
-  
 }
 
 @keyframes spin8932 {
@@ -104,5 +100,4 @@ export default {
     transform: rotate(360deg);
   }
 }
-
 </style>

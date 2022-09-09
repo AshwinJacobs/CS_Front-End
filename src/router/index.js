@@ -43,6 +43,11 @@ const routes = [
     name: "cart",
     component: () => import("../views/cart.vue"),
   },
+  {
+    path: "/ContactView",
+    name: "ContactView",
+    component: () => import("../views/ContactView.vue"),
+  },
 
   {
     path: "/AccountView",
@@ -56,7 +61,6 @@ const routes = [
     // props: true,
   },
 
-
   {
     path: "/Admin",
     name: "Admin",
@@ -64,7 +68,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Admin.vue"),
   },
-
 ];
 
 const router = createRouter({

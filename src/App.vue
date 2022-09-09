@@ -2,12 +2,8 @@
   <div><Navbar /></div>
   <router-view />
   <body>
-  <div></div>
-
+    <div></div>
   </body>
-  <v-Footer>
-    <Footer />
-  </v-Footer>
 </template>
 
 <script>
@@ -31,18 +27,17 @@ export default {
   box-sizing: border-box;
 }
 
-body{
+body {
   overflow-x: hidden;
-  background-image: url("https://i.postimg.cc/26yL2FsK/light-5951708-1920.jpg");
+  background-image: url("");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
- 
-
-
+  aspect-ratio: 1.5px;
 }
-.form-label , h1{
-    color: white;
-    font-size: 35px;
-  }
+.form-label,
+h1 {
+  color: white;
+  font-size: 35px;
+}
 </style>

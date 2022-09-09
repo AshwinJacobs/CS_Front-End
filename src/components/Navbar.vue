@@ -22,7 +22,6 @@
           <li>
             <router-link class="link" to="/login" @click="logout"
               >Logout {{ User.full_name }}</router-link
-              
             >
           </li>
         </div>
@@ -44,10 +43,8 @@
       </div>
       <transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
-          <h1 class="cash">products</h1>
-          <!-- <li>
-            <router-link class="link" to="/">Home</router-link>
-          </li> -->
+          <h1 class="cash">The Gadget Store</h1>
+
           <li>
             <router-link class="link" to="/home">Home</router-link>
           </li>
@@ -56,6 +53,9 @@
           </li>
           <li>
             <router-link class="link" to="/products">All products</router-link>
+          </li>
+          <li>
+            <router-link class="link" to="/Contact">Contact</router-link>
           </li>
           <li>
             <router-link class="link" to="/cart">Cart</router-link>

@@ -25,6 +25,10 @@ export default {
 };
 </script>
 <style scoped>
+.row[data-v-67abbd7e] {
+  margin-top: 10px;
+  margin-left: 0rem;
+}
 .body {
   padding-left: 6.5rem;
 }
