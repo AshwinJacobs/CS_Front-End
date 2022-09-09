@@ -70,14 +70,19 @@
                     <span>{{ num }} product</span> )
                     <span>R{{ total }}.00</span>
                   </p>
+                  <form
+        action="https://formspree.io/f/xzbwdyjk"
+      method="post"
+      >
                   <button
+                    method="post"
                     class="btn my-1"
-                    type="button"
+                    type="submit"
                     data-bs-toggle="modal"
                     data-bs-target="#checkout"
                   >
-                    Checkout
-                  </button>
+                    <label for="checkout">checkout</label>
+                  </button></form>
                 </div>
               </div>
             </div>
@@ -127,7 +132,7 @@ export default {
   min-height: 100vh;
 }
 .btn {
-  background-color: black;
+  background-color: rgb(255, 0, 0);
 }
 .col-md-8 {
     flex: 0 0 auto;

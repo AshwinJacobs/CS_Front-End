@@ -27,17 +27,16 @@ export default {
   box-sizing: border-box;
 }
 
-body {
+body , html {
   overflow-x: hidden;
-  background-image: url("");
+  background-image: url("https://i.postimg.cc/T1KzCs20/background-1872802-1920.jpg");
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  aspect-ratio: 1.5px;
+  background-position-y: 0vh;
+  background-size: 180vh;
 }
 .form-label,
 h1 {
-  color: white;
+  color: rgb(247, 21, 21);
   font-size: 35px;
 }
 </style>

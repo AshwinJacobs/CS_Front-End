@@ -77,6 +77,9 @@ export default {
   margin-right: auto;
   margin-left: auto;
 }
+h1, lable{
+  color: red;
+}
 html,
 body {
   height: 100%;

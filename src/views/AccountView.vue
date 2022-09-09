@@ -4,7 +4,7 @@
     v-if="user"
     class="account container d-flex justify-content-center align-items-center flex-column"
   >
-    <h2 class="pb-5">MANAGE YOUR ACCOUNT</h2>
+    <h2 class=" head pb-5">MANAGE YOUR ACCOUNT</h2>
     <div id="UserCard" class="row w-100">
       <div
         class="col-md-6 d-flex justify-content-center gap-5 align-items-center flex-column"
@@ -190,11 +190,13 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6, head {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   margin-top: 10rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
+  color: red;
 }
 .pb-5 {
   padding-bottom: 5rem !important;

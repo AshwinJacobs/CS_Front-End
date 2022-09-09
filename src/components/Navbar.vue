@@ -10,6 +10,9 @@
           <router-link class="link" to="/about">About</router-link>
         </li>
         <li>
+            <router-link class="link" to="/Contact">Contact</router-link>
+          </li>
+        <li>
           <router-link class="link" to="/products">All products</router-link>
         </li>
         <li>
@@ -54,9 +57,7 @@
           <li>
             <router-link class="link" to="/products">All products</router-link>
           </li>
-          <li>
-            <router-link class="link" to="/Contact">Contact</router-link>
-          </li>
+         
           <li>
             <router-link class="link" to="/cart">Cart</router-link>
           </li>

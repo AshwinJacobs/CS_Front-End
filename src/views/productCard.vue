@@ -84,19 +84,23 @@ export default {
   padding: 50px;
 }
 .img-fluid {
-  width: 1rem;
+  width: 100%;
   height: 18rem;
   border-radius: 10px;
   transition: 0.2 linear;
 }
 .card-text {
-  padding-left: 10rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding-left: 12rem;
+  color: red;
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .col-md-4 {
   flex: 0 0 auto;
   width: 100%;
-  padding-top: 10rem;
+  padding-top: 20rem;
 }
 .wrap {
   height: 100%;
@@ -108,7 +112,7 @@ export default {
 .button {
   width: 140px;
   height: 45px;
-  margin-top: 2rem;
+  margin-bottom: 15rem;
   font-family: "Roboto", sans-serif;
   font-size: 11px;
   text-transform: uppercase;

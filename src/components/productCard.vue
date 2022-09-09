@@ -4,7 +4,7 @@
       class="router-text"
       :to="{ name: 'productCard', params: { id: product.product_id } }"
     >
-      <div class="card m-3" style="width: 18rem">
+      <div class="card m-3" style="width:18rem">
         <img v-bind:src="product.image" class="img-fluid" />
         <div class="card-body">
           <p class="card-text-product">
@@ -55,11 +55,14 @@ export default {
   background-color: rgba(15, 2, 2, 0);
 }
 .card {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
+  color: red;
+  font-size: 2rem;
 
   /* background-clip: border-box; */
   border: 1px solidrgba(0, 0, 0, 0.125);
