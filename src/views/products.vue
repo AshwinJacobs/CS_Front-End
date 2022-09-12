@@ -98,7 +98,7 @@ export default {
 <style scoped>
 .row {
   margin-top: 10px;
-  margin-left: 5rem;
+  margin-left: 1rem;
 }
 .SB {
   margin-top: 53px;
