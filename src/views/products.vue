@@ -13,7 +13,60 @@
     />
   </div>
   <div v-else>
-    <div class="spinner" id="spin"></div>
+    <div
+      class="tvdd"
+      role="img"
+      aria-label="Three intersecting rings of twelve pulsing dots that never collide"
+    >
+      <div class="tvdd__ring">
+        <div class="tvdd__ring-dots">
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+        </div>
+      </div>
+      <div class="tvdd__ring">
+        <div class="tvdd__ring-dots">
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+        </div>
+      </div>
+      <div class="tvdd__ring">
+        <div class="tvdd__ring-dots">
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+          <div class="tvdd__ring-dot"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -60,44 +113,160 @@ export default {
   color: black;
 }
 
-/* From uiverse.io by @EmmaxPlay */
-.spinner {
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: hsl(223deg, 10%, 90%);
+  --trans-dur: 0.3s;
+  font-size: calc(16px + 4 * (100vw - 320px) / 960);
+}
+
+body {
+  background-color: var(--bg);
+  font: 1em/1.5 sans-serif;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  transition: background-color var(--trans-dur);
+}
+.tvdd[data-v-67abbd7e] {
+  overflow: hidden;
   position: relative;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 18em;
+  height: 13em;
+  margin-top: 15rem;
+  margin-left: 39rem;
 }
 
-.spinner::before,
-.spinner:after {
-  content: "";
+.tvdd {
+  overflow: hidden;
+  position: relative;
+  width: 16em;
+  height: 16em;
+}
+.tvdd__ring {
+  top: 0;
+  left: 18.75%;
+  width: 62.5%;
+  height: 62.5%;
+  transform-origin: 50% 80%;
+}
+.tvdd__ring,
+.tvdd__ring-dot {
   position: absolute;
-  border-radius: inherit;
 }
-
-.spinner:before {
+.tvdd__ring-dots {
+  animation: pivot 1s linear infinite;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
-  animation: spin8932 0.5s infinite linear;
-  margin-left: 45rem;
-  margin-top: 15rem;
+}
+.tvdd__ring-dot {
+  animation: pulse 1s ease-in-out infinite;
+  background-color: hsl(193deg, 90%, 55%);
+  border-radius: 50%;
+  margin: -5% 0 0 -5%;
+  width: 10%;
+  height: 10%;
+}
+.tvdd__ring-dot:nth-child(1) {
+  top: 38.3531429704%;
+  left: 6.533337817%;
+}
+.tvdd__ring-dot:nth-child(2) {
+  animation-delay: -0.0833333333s;
+  top: 61.6468570296%;
+  left: 6.533337817%;
+}
+.tvdd__ring-dot:nth-child(3) {
+  animation-delay: -0.1666666667s;
+  top: 81.8198051534%;
+  left: 18.1801948466%;
+}
+.tvdd__ring-dot:nth-child(4) {
+  animation-delay: -0.25s;
+  top: 93.466662183%;
+  left: 38.3531429704%;
+}
+.tvdd__ring-dot:nth-child(5) {
+  animation-delay: -0.3333333333s;
+  top: 93.466662183%;
+  left: 61.6468570296%;
+}
+.tvdd__ring-dot:nth-child(6) {
+  animation-delay: -0.4166666667s;
+  top: 81.8198051534%;
+  left: 81.8198051534%;
+}
+.tvdd__ring-dot:nth-child(7) {
+  animation-delay: -0.5s;
+  top: 61.6468570296%;
+  left: 93.466662183%;
+}
+.tvdd__ring-dot:nth-child(8) {
+  animation-delay: -0.5833333333s;
+  top: 38.3531429704%;
+  left: 93.466662183%;
+}
+.tvdd__ring-dot:nth-child(9) {
+  animation-delay: -0.6666666667s;
+  top: 18.1801948466%;
+  left: 81.8198051534%;
+}
+.tvdd__ring-dot:nth-child(10) {
+  animation-delay: -0.75s;
+  top: 6.533337817%;
+  left: 61.6468570296%;
+}
+.tvdd__ring-dot:nth-child(11) {
+  animation-delay: -0.8333333333s;
+  top: 6.533337817%;
+  left: 38.3531429704%;
+}
+.tvdd__ring-dot:nth-child(12) {
+  animation-delay: -0.9166666667s;
+  top: 18.1801948466%;
+  left: 18.1801948466%;
+}
+.tvdd__ring:nth-child(2) {
+  transform: rotate(120deg);
+}
+.tvdd__ring:nth-child(2) .tvdd__ring-dot {
+  background-color: hsl(223deg, 90%, 55%);
+}
+.tvdd__ring:nth-child(3) {
+  transform: rotate(240deg);
+}
+.tvdd__ring:nth-child(3) .tvdd__ring-dot {
+  background-color: hsl(253deg, 90%, 55%);
 }
 
-.spinner:after {
-  width: 85%;
-  height: 85%;
-  background-color: #212121;
-  top: 50%;
-  left: 50%;
-  margin-left: 45rem;
-  margin-top: 15rem;
-  transform: translate(-50%, -50%);
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: hsl(223deg, 10%, 10%);
+  }
 }
-
-@keyframes spin8932 {
+/* Animations */
+@keyframes pivot {
+  from {
+    transform: rotate(0);
+  }
   to {
-    transform: rotate(360deg);
+    transform: rotate(30deg);
+  }
+}
+@keyframes pulse {
+  from,
+  to {
+    transform: scale(0.1);
+  }
+  50% {
+    transform: scale(1);
   }
 }
 </style>
